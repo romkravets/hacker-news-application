@@ -12,13 +12,15 @@ import { HackerNewsAPIService } from '../hackernews-api.service';
 
 export class StoriesComponent implements OnInit {
   items;
+  
 
   constructor(private _hackerNewsAPIService: HackerNewsAPIService) {}
 
   ngOnInit() {
-  	this._hackerNewsAPIService.fetchStories()
-                   	.subscribe(
-                    	items => this.items = items,
-                    	error => console.log('Error fetching stories'));
+  this._hackerNewsAPIService.fetchStories()
+    .subscribe(items => this.items = items,
+      error => {
+        return console.log('Error fetching stories');
+      });
   }
 }
