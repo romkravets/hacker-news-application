@@ -1,5 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule  } from '@angular/common/http';
+
+import { HackerNewsAPIService } from './hackernews-api.service';
+import { NgArrayPipesModule, NgStringPipesModule } from 'angular-pipes';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,13 +19,19 @@ import { ItemComponent } from './item/item.component';
     HeaderComponent,
     StoriesComponent,
     FooterComponent,
-    ItemComponent
+    ItemComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NgArrayPipesModule,
+    NgStringPipesModule
   ],
-  providers: [],
+  providers: [HackerNewsAPIService,
+    HttpClientModule,
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
